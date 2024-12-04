@@ -381,7 +381,9 @@ body {
 }
 
 footer {
-  bottom: 0;
+  position: absolute;
+  top: auto;
+  bottom: auto;
   width: 100%;
   background-color: #252d2d;
   display: flex;
