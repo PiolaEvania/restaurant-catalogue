@@ -28,8 +28,8 @@ const createRestaurantItemTemplate = (restaurant) => `
     <div class="resto" data-dataid="${restaurant.id}">
       <a href="#/detail/${restaurant.id}">
       <picture>
-        <source class="lazyload" srcset="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}">
-        <img class="resto-poster lazyload" src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}">
+        <source class="lazyload" data-srcset="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}">
+        <img class="resto-poster lazyload" data-src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}">
       </picture>
       <h4>${restaurant.name}</h4></a>
       <p class="rating">Rating: <span>${restaurant.rating}</span></p>
@@ -43,8 +43,8 @@ const createRestaurantDetailTemplate = (restaurant) => `
   <div class="wrapper wrapper-detail">
     <div class="resto" data-dataid="${restaurant.restaurant.id}">
       <picture>
-        <source class="lazyload" srcset="${CONFIG.BASE_IMAGE_URL + restaurant.restaurant.pictureId}">
-        <img class="resto-poster lazyload" src="${CONFIG.BASE_IMAGE_URL + restaurant.restaurant.pictureId}" alt="${restaurant.restaurant.name}">
+        <source class="lazyload" data-srcset="${CONFIG.BASE_IMAGE_URL + restaurant.restaurant.pictureId}">
+        <img class="resto-poster lazyload" data-src="${CONFIG.BASE_IMAGE_URL + restaurant.restaurant.pictureId}" alt="${restaurant.restaurant.name}">
       </picture>
       <h4>${restaurant.restaurant.name}</h4>
       <p class="rating">Rating: <span>${restaurant.restaurant.rating}</span></p>

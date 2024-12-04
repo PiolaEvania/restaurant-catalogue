@@ -8,9 +8,6 @@ const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 const ImageminMozjpeg = require('imagemin-mozjpeg');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const isProduction = process.env.NODE_ENV === 'production';
-const shouldAnalyze = process.env.ANALYZE === 'true';
-
 module.exports = {
   entry: {
     app: path.resolve(__dirname, 'src/scripts/index.js'),
@@ -19,29 +16,6 @@ module.exports = {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-  },
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-      minSize: 20000,
-      maxSize: 70000,
-      minChunks: 1,
-      maxAsyncRequests: 30,
-      maxInitialRequests: 30,
-      automaticNameDelimiter: '~',
-      enforceSizeThreshold: 50000,
-      cacheGroups: {
-        defaultVendors: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10,
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true,
-        },
-      },
-    },
   },
   module: {
     rules: [
@@ -78,25 +52,23 @@ module.exports = {
         }),
       ],
     }),
-    ...(isProduction ? [
-      new WorkboxWebpackPlugin.GenerateSW({
-        swDest: './sw.bundle.js',
-        skipWaiting: true,
-        clientsClaim: true,
-        runtimeCaching: [
-          {
-            urlPattern: new RegExp('^https://restaurant-api.dicoding.dev/'),
-            handler: 'StaleWhileRevalidate',
-            options: {
-              cacheName: 'RestaurantCatalogue-V1',
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
+    new WorkboxWebpackPlugin.GenerateSW({
+      swDest: './sw.bundle.js',
+      skipWaiting: true,
+      clientsClaim: true,
+      runtimeCaching: [
+        {
+          urlPattern: new RegExp('^https://restaurant-api.dicoding.dev/'),
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'RestaurantCatalogue-V1',
+            cacheableResponse: {
+              statuses: [0, 200],
             },
           },
-        ],
-      }),
-    ] : []),
-    ...(shouldAnalyze ? [new BundleAnalyzerPlugin()] : []),
+        },
+      ],
+    }),
+    new BundleAnalyzerPlugin(),
   ],
 };

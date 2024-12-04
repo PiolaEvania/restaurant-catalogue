@@ -1,11 +1,10 @@
 /* eslint-disable no-undef */
 const assert = require('assert');
-const baseUrl = 'http://localhost:8100';
 
 Feature('Liking, Unliking, Review Restaurant');
 
 Scenario('showing empty liked restaurants',  ({ I }) => {
-  I.amOnPage('http://localhost:8100/#/favorite');
+  I.amOnPage('/#/favorite');
   I.seeElement('.header-favorite');
   I.see('My Favorite Restaurant');
 
@@ -13,7 +12,7 @@ Scenario('showing empty liked restaurants',  ({ I }) => {
 });
 
 Scenario('liking one restaurant', async ({ I }) => {
-  I.amOnPage(baseUrl);
+  I.amOnPage('/');
 
   I.waitForElement('.resto a', 5);
   I.seeElement('.resto a h4');
@@ -25,7 +24,7 @@ Scenario('liking one restaurant', async ({ I }) => {
   I.seeElement('#likeButton');
   I.click('#likeButton');
 
-  I.amOnPage('http://localhost:8100/#/favorite');
+  I.amOnPage('/#/favorite');
   I.waitForElement('.resto a h4', 10);
   I.seeElement('.restaurant-item');
   const likedRestaurantTitle = await I.grabTextFrom('.resto a h4');
@@ -36,7 +35,7 @@ Scenario('liking one restaurant', async ({ I }) => {
 });
 
 Scenario('unliking one restaurant', async ({ I }) => {
-  I.amOnPage(baseUrl);
+  I.amOnPage('/');
 
   I.waitForElement('.resto a', 10);
   I.click(locate('.resto a h4').first());
@@ -45,7 +44,7 @@ Scenario('unliking one restaurant', async ({ I }) => {
   I.seeElement('#likeButton');
   I.click('#likeButton');
 
-  I.amOnPage('http://localhost:8100/#/favorite');
+  I.amOnPage('/#/favorite');
   I.dontSeeElement('My Favorite Restaurant', '.header-favorite');
 
   I.waitForElement('.resto a', 10);
@@ -55,14 +54,14 @@ Scenario('unliking one restaurant', async ({ I }) => {
   I.seeElement('#likeButton');
   I.click('#likeButton');
 
-  I.amOnPage('http://localhost:8100/#/favorite');
+  I.amOnPage('/#/favorite');
   I.dontSeeElement('.resto a');
 
   I.saveScreenshot('unliking_restaurant.png');
 });
 
 Scenario('should display restaurant item correctly', async ({ I }) => {
-  I.amOnPage(baseUrl);
+  I.amOnPage('/');
 
   I.waitForVisible('.resto-poster', 10);
   I.seeElement('.resto-poster');
@@ -75,7 +74,7 @@ Scenario('should display restaurant item correctly', async ({ I }) => {
 });
 
 Scenario('should display restaurant rating correctly', async ({ I }) => {
-  I.amOnPage(baseUrl);
+  I.amOnPage('/');
 
   I.waitForVisible('.rating', 10);
   I.seeElement(locate('.rating').first());
@@ -87,7 +86,7 @@ Scenario('should display restaurant rating correctly', async ({ I }) => {
 });
 
 Scenario('post a restaurant review', async ({ I }) => {
-  I.amOnPage(baseUrl);
+  I.amOnPage('/');
 
   I.waitForElement('.resto a', 10);
   I.click(locate('.resto a h4').first());
