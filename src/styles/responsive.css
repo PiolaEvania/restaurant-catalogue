@@ -61,7 +61,7 @@
     object-position: center;
   }
 
-  .content-favorite h2 {
+  .content-favorite h1 {
     color: #252d2d;
     font-size: 1.8em;
     text-align: center;
@@ -95,7 +95,7 @@
     margin: auto;
     border-radius: 5px;
     margin-top: 20px;
-    padding-bottom: 15px;
+    padding-bottom: 20px;
   }
 
   .wrapper .resto img {
@@ -391,7 +391,7 @@
     object-position: center;
   }
 
-  .content-favorite h2 {
+  .content-favorite h1 {
     color: #252d2d;
     text-align: center;
     font-size: 2em;

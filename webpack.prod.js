@@ -1,15 +1,39 @@
 /* eslint-disable no-undef */
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
-  devServer: {
-    port: 3000,
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: {
+            // eslint-disable-next-line camelcase
+            drop_console: true,
+          },
+          format: {
+            comments: false,
+          },
+        },
+        extractComments: false,
+      }),
+      new CssMinimizerPlugin(),
+    ],
   },
-  devtool: 'source-map',
   module: {
     rules: [
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+        ],
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -24,4 +48,10 @@ module.exports = merge(common, {
       },
     ],
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+    }),
+  ],
+  devtool: 'hidden-source-map',
 });

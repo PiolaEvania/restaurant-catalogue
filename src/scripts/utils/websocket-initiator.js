@@ -18,6 +18,12 @@ const WebSocketInitiator = {
       },
     });
   },
+
+  close() {
+    if (this.webSocket) {
+      this.webSocket.close();
+    }
+  },
 };
 
 export default WebSocketInitiator;

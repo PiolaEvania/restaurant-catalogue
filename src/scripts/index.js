@@ -15,6 +15,10 @@ const app = new App({
   content: document.querySelector('#main-content'),
 });
 
+window.addEventListener('beforeunload', () => {
+  WebSocketInitiator.close();
+});
+
 window.addEventListener('hashchange', () => {
   app.renderPage();
 });

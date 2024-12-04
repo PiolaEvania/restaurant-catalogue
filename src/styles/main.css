@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
-
 * {
   margin: 0;
   padding: 0;
@@ -139,10 +137,10 @@ body {
   object-position: center;
 }
 
-.content-favorite h2 {
-  color: #252d2d;
-  text-align: center;
+.content-favorite h1 {
   padding: 20px 0 0 0;
+  text-align: center;
+  color: #252d2d;
 }
 
 .container-resto .content h1 {
@@ -168,6 +166,7 @@ body {
   margin: auto;
   border-radius: 5px;
   margin-top: 20px;
+  padding-bottom: 10px;
 }
 
 .wrapper .resto img {
