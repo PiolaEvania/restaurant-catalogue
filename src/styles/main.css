@@ -224,7 +224,7 @@ body {
   font-weight: 300;
 }
 
-.resto a:active {
+.resto a {
   color: #252d2d;
 }
 
@@ -232,7 +232,7 @@ body {
   text-decoration: underline;
 }
 
-.resto a:visited {
+.resto a:visited:active {
   color: #252d2d;
 }
 
