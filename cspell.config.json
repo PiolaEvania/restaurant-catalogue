@@ -1,0 +1,4 @@
+/* untuk mengabaikan text Bahasa Indonesia yang dideteksi sebagai problem oleh extension Code Spell Checker */
+{
+  "ignorePaths": ["**/*"]
+}

@@ -1,0 +1,417 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
+body {
+  font-family: "Merriweather", serif;
+  color: #252d2d;
+  background-color: #eaeaeb;
+  overflow-x: hidden;
+}
+
+.skip {
+  color: #eaeaeb;
+  position: absolute;
+  top: 0;
+  z-index: 99;
+  left: 0;
+  cursor: pointer;
+  font-size: 1em;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px;
+  text-align: center;
+}
+
+.skip:focus {
+  background-color: #252d2d;
+  font-weight: bold;
+  top: 120px;
+  z-index: inherit;
+}
+
+.app-bar {
+  padding: 10px;
+  background-color: #252d2d;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+
+.app-bar .app-bar__menu {
+  display: flex;
+  align-items: center;
+}
+
+.app-bar .app-bar__menu #hamburgerButton {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.app-bar .app-bar__menu button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5em;
+  padding: 10px;
+  cursor: pointer;
+  color: #eaeaeb;
+}
+
+.app-bar .app-bar__menu button:focus {
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.8);
+}
+
+.app-bar .app-bar__brand {
+  display: flex;
+  align-items: center;
+}
+
+.app-bar .app-bar__brand h2 {
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 1.5em;
+  color: #eaeaeb;
+}
+
+.app-bar .app-bar__navigation {
+  position: absolute;
+  top: 70px;
+  left: -180px;
+  width: 150px;
+  transition: all 0.3s;
+  padding: 8px;
+  background-color: #252d2d;
+  overflow: hidden;
+}
+
+.app-bar .app-bar__navigation.open {
+  left: 0;
+}
+
+.app-bar .app-bar__navigation ul li a {
+  display: inline-block;
+  text-decoration: none;
+  color: #eaeaeb;
+  padding: 8px;
+  margin-bottom: 5px;
+  width: auto;
+  height: 44px;
+}
+
+.app-bar .app-bar__navigation a:focus {
+  font-weight: bold;
+  text-shadow: 0 3px 3px rgba(0, 0, 0, 0.8);
+}
+
+.hero {
+  margin: auto;
+  justify-content: center;
+}
+
+.container-hero {
+  width: 100%;
+  top: 0;
+  display: flex;
+  background-color: #252d2d;
+}
+
+.container-hero::before {
+  content: "";
+  width: 100%;
+  position: absolute;
+  background-color: rgba(35, 35, 35, 0.508);
+  height: 300px;
+}
+
+.hero img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.content-favorite h2 {
+  color: #252d2d;
+  text-align: center;
+  padding: 20px 0 0 0;
+}
+
+.container-resto .content h1 {
+  padding: 20px 0 0 0;
+  text-align: center;
+  color: #252d2d;
+}
+
+.container-resto .content .content-resto {
+  width: 100%;
+  height: max-content;
+  padding-bottom: 20px;
+}
+
+.container-resto .content .content-resto .wrapper {
+  display: grid;
+}
+
+.container-resto .content .content-resto .wrapper .resto {
+  width: 90%;
+  height: max-content;
+  border: 2px solid #252d2d;
+  margin: auto;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.wrapper .resto img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.wrapper .resto h4 {
+  text-align: center;
+  font-size: 1.3em;
+  margin-top: 10px;
+}
+
+.wrapper .resto .rating {
+  padding-left: 15px;
+  color: #252d2d;
+  margin-top: 10px;
+  font-weight: 600;
+  padding-right: 30px;
+}
+
+.wrapper .resto .rating span {
+  color: #252d2d;
+  font-weight: 300;
+}
+
+.wrapper .resto .deskripsi {
+  padding-left: 15px;
+  color: #252d2d;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  padding-right: 30px;
+}
+
+.wrapper .resto .deskripsi span {
+  color: #252d2d;
+  font-weight: 300;
+}
+
+.resto .city {
+  padding-left: 15px;
+  color: #252d2d;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  padding-right: 30px;
+}
+
+.wrapper .resto .city span {
+  color: #252d2d;
+  font-weight: 300;
+}
+
+.resto a:hover {
+  text-decoration: underline;
+}
+
+.resto a:visited {
+  color: #252d2d;
+}
+
+.detail-header {
+  padding-left: 15px;
+  font-size: 1em;
+  color: #252d2d;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.detail-deskripsi {
+  padding-left: 15px;
+  color: #252d2d;
+  font-weight: 300;
+}
+
+.detail-deskripsi ul {
+  margin: -10px 0 10px 0;
+  padding-left: 35px;
+}
+
+.detail-deskripsi li {
+  margin-bottom: 5px;
+}
+
+.detail-review {
+  width: 100%;
+  padding: 10px 15px 0 15px;
+  justify-content: center;
+}
+
+.detail-review .review {
+  border: 1px solid rgba(35, 35, 35, 0.6);
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.detail-review .review .review-name {
+  font-weight: 500;
+  padding-bottom: 4px;
+}
+
+.detail-review .review .review-name span {
+  font-size: 0.8em;
+  font-weight: 200;
+}
+
+.detail-review .review .review-body {
+  font-weight: 400;
+}
+
+#reviewForm {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  padding: 10px 15px 10px 15px;
+}
+
+#reviewForm input {
+  min-width: 44px;
+  min-height: 44px;
+  font-family: "Merriweather", serif;
+  border: 1px solid #252d2d;
+  padding: 5px 0 5px 10px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+#reviewForm input:focus {
+  border: 2px solid #252d2d;
+}
+
+#reviewForm input:focus::placeholder {
+  font-weight: bold;
+}
+
+#reviewForm textarea {
+  min-width: 44px;
+  min-height: 44px;
+  font-family: "Merriweather", serif;
+  border: 1px solid #252d2d;
+  line-height: 2em;
+  padding: 5px 0 5px 10px;
+  border-radius: 3px;
+}
+
+#reviewForm textarea:focus {
+  border: 2px solid #252d2d;
+}
+
+#reviewForm textarea:focus::placeholder {
+  font-weight: bold;
+}
+
+#reviewForm button {
+  min-width: 44px;
+  min-height: 44px;
+  font-family: "Merriweather", serif;
+  color: #eaeaeb;
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #252d2d;
+  border-radius: 3px;
+}
+
+#reviewForm button:focus {
+  font-weight: bold;
+  border: 2px solid #252d2d;
+  text-shadow: 0 1px 1px rgba(35, 35, 35, 0.6);
+}
+
+#reviewForm button:hover {
+  font-weight: bold;
+  border: 2px solid #252d2d;
+  text-shadow: 0 1px 1px rgba(35, 35, 35, 0.6);
+}
+
+.like {
+  padding: 0 0 0 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 2em;
+  transition: color 0.3s ease;
+}
+
+.like:hover {
+  color: #ff4081;
+}
+
+.like:focus {
+  outline: none;
+}
+
+.fa-heart-o {
+  color: #ccc;
+}
+
+.fa-heart {
+  color: #ff4081;
+}
+
+#likeButtonContainer i {
+  font-size: 1.5em;
+}
+
+footer {
+  bottom: 0;
+  width: 100%;
+  background-color: #252d2d;
+  display: flex;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+#footerTools {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+footer a {
+  color: #eaeaeb;
+}
+
+footer a:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+footer .container-footer {
+  display: flex;
+  width: 100%;
+}
+
+footer .container-footer .text-footer {
+  color: #eaeaeb;
+  font-size: 1em;
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+}
