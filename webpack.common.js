@@ -9,6 +9,7 @@ const ImageminMozjpeg = require('imagemin-mozjpeg');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const isProduction = process.env.NODE_ENV === 'production';
+const shouldAnalyze = process.env.ANALYZE === 'true';
 
 module.exports = {
   entry: {
@@ -96,6 +97,6 @@ module.exports = {
         ],
       }),
     ] : []),
-    new BundleAnalyzerPlugin(),
+    ...(shouldAnalyze ? [new BundleAnalyzerPlugin()] : []),
   ],
 };
