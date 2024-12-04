@@ -8,6 +8,8 @@ const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 const ImageminMozjpeg = require('imagemin-mozjpeg');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 module.exports = {
   entry: {
     app: path.resolve(__dirname, 'src/scripts/index.js'),
@@ -75,23 +77,25 @@ module.exports = {
         }),
       ],
     }),
-    new WorkboxWebpackPlugin.GenerateSW({
-      swDest: './sw.bundle.js',
-      skipWaiting: true,
-      clientsClaim: true,
-      runtimeCaching: [
-        {
-          urlPattern: new RegExp('^https://restaurant-api.dicoding.dev/'),
-          handler: 'StaleWhileRevalidate',
-          options: {
-            cacheName: 'RestaurantCatalogue-V1',
-            cacheableResponse: {
-              statuses: [0, 200],
+    ...(isProduction ? [
+      new WorkboxWebpackPlugin.GenerateSW({
+        swDest: './sw.bundle.js',
+        skipWaiting: true,
+        clientsClaim: true,
+        runtimeCaching: [
+          {
+            urlPattern: new RegExp('^https://restaurant-api.dicoding.dev/'),
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'RestaurantCatalogue-V1',
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
             },
           },
-        },
-      ],
-    }),
+        ],
+      }),
+    ] : []),
     new BundleAnalyzerPlugin(),
-  ]
+  ],
 };
