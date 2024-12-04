@@ -224,6 +224,10 @@ body {
   font-weight: 300;
 }
 
+.resto a:active {
+  color: #252d2d;
+}
+
 .resto a:hover {
   text-decoration: underline;
 }
