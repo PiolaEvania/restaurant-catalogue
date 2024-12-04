@@ -8,6 +8,8 @@ const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 const ImageminMozjpeg = require('imagemin-mozjpeg');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
+const isAnalyze = process.env.ANALYZE === 'true';
+
 module.exports = {
   entry: {
     app: path.resolve(__dirname, 'src/scripts/index.js'),
@@ -69,6 +71,6 @@ module.exports = {
         },
       ],
     }),
-    new BundleAnalyzerPlugin(),
+    ...(isAnalyze ? [new BundleAnalyzerPlugin()] : []),
   ],
 };
