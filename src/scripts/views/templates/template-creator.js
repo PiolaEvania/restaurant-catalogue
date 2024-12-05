@@ -34,7 +34,6 @@ const createRestaurantItemTemplate = (restaurant) => `
       <h4>${restaurant.name}</h4></a>
       <p class="rating">Rating: <span>${restaurant.rating}</span></p>
       <p class="city">City: <span>${restaurant.city}</span></p>
-      <p class="deskripsi">Description: <span>${restaurant.description}</span></p>
     </div>
   </div>
 `;
