@@ -12,6 +12,9 @@ body {
   color: #252d2d;
   background-color: #eaeaeb;
   overflow-x: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }
 
 .skip {
@@ -393,9 +396,8 @@ body {
 }
 
 footer {
-  position: absolute;
-  top: auto;
-  bottom: auto;
+  position: relative;
+  bottom: 0;
   width: 100%;
   background-color: #252d2d;
   display: flex;
